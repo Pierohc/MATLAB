@@ -29,3 +29,9 @@
     plot(t_e,x_e(t_e),"LineWidth",1.5)
     grid on;
     axis([-2.5,2.5,-1.5,2.5])
+
+## Delta de Dirac:
+    t = -5:0.01:5;
+    delta = @(t) t == 0;
+    stem(t, delta(t),"LineWidth",1);
+
