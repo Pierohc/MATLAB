@@ -35,3 +35,22 @@
     delta = @(t) t == 0;
     stem(t, delta(t),"LineWidth",1);
 
+## Convolución:
+
+Se piden: y(t) = h2(t) ∗ [h1(t) ∗x1(t)]
+Recordar que y(t) = [h2(t) * h1(t)] *x1(t)
+
+    dt= 0.001; 
+    t = 0:dt:5;
+    
+    h2 = @(t)  (2*exp(-2*t));
+    h1 = @(t)  (t/pi);
+    
+    hh = conv(h2(t),h1(t))*dt;
+
+y(t) = hh(t) * x1(t)
+
+    x1 = @(t)  (heaviside(t) - heaviside(t-5));
+    
+    y = conv(hh,x1(t))*dt;
+
