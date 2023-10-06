@@ -44,5 +44,21 @@
       % se conviertan a rptas numéricas con 10 cifras de
       % exactitud
 
+## Solve y Dsolve:
+Solve se usa para ecuaciones algebraicas y dsolve para ecuaciones diferenciales. Como en Laplace el Y´´ y el Y´ ya tienen en si las condiciones iniciales, se usa solve. En cambio en ec. diferenciales usamos diff y evaluamos con cond, estamos trabajando más directamente con ecuaciones diferenciales y por eso se usa dsolve.
+
+# En ecuaciones diferenciales solo se hace syms al t y a lo que hayaremos, al y(t)
+![image](https://github.com/Pierohc/MATLAB/assets/133154904/039232ea-1daf-47e3-a551-7138c8437433)
+
+    syms t y(t)
+    x = cos(t) + t^3;
+    dx = diff(x);
+    dy2 = diff(y,2);
+    dy = diff(y);
+    ecu = (dy2 == 4*dy + 5*dx - 2*x);
+    cond=[y(0)==0, dy(0)==1]
+    ysol(t) = dsolve(ecu,cond)
+    
+    fplot(ysol, [-1,1])
 
 
